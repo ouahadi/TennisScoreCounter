@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingEnd="66dp"
+        android:paddingRight="66dp"
+        android:alpha="1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tennis3" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        tools:context="com.example.android.tennisscorecounter.MainActivity">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:context="com.example.android.tennisscorecounter.MainActivity">
+
+            <TextView
+                android:id="@+id/player_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="24dp"
+                android:text="Player A"
+                android:fontFamily="cursive"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/player_a_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="24dp"
+                android:text="love"
+                android:fontFamily="cursive"
+                android:textColor="@android:color/white"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/player_a_games"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="24dp"
+                android:textColor="@android:color/white"
+                android:text="0"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/player_a_sets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:fontFamily="sans-serif-light"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:textSize="56sp" />
+
+            <Button
+                android:id="@+id/player_a_add_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="24dp"
+                android:onClick="addScorePlayerA"
+                android:text="score!" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:context="com.example.android.tennisscorecounter.MainActivity">
+
+            <TextView
+                android:id="@+id/player_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="24dp"
+                android:text="Player B"
+                android:textColor="@android:color/white"
+                android:fontFamily="cursive"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/player_b_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="24dp"
+                android:text="love"
+                android:fontFamily="cursive"
+                android:textColor="@android:color/white"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/player_b_games"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="24dp"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:textSize="28sp" />
+
+            <TextView
+                android:id="@+id/player_b_sets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:fontFamily="sans-serif-light"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:textSize="56sp" />
+
+            <Button
+                android:id="@+id/player_b_add_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="24dp"
+
+                android:onClick="addScorePlayerB"
+                android:text="score!" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="32dp"
+            android:text="Points"
+            android:textAllCaps="true"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="32dp"
+            android:textColor="@android:color/white"
+            android:textAllCaps="true"
+            android:text="Games"
+            android:fontFamily="sans-serif-black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAllCaps="true"
+            android:padding="32dp"
+            android:text="Sets"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/game_over"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="24dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:text="game over"
+        android:onClick="Reset"/>
+
+</RelativeLayout>
