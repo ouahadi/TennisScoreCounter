@@ -7,38 +7,44 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int scorePlayerA = 0;
-    int scorePlayerB = 0;
+    short scorePlayerA = 0;
+    short scorePlayerB = 0;
     int gamesPlayerA = 0;
     int gamesPlayerB = 0;
     int setsPlayerA = 0;
     int setsPlayerB = 0;
+    private String scoreTeamA = "love";
+    private String scoreTeamB = "love";
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
     }
 
     public void addScorePlayerA(View view) {
-        scorePlayerA = scorePlayerA + 1;
+        scorePlayerA = (short) (scorePlayerA + 1);
         if (scorePlayerA == 1) {
-            String scoreTeamA = "15";
+            scoreTeamA = "15";
             displayMessageA(scoreTeamA);
         }
         if (scorePlayerA == 2) {
-            String scoreTeamA = "30";
+            scoreTeamA = "30";
             displayMessageA(scoreTeamA);
         }
         if (scorePlayerA == 3) {
-            String scoreTeamA = "40";
+            scoreTeamA = "40";
             displayMessageA(scoreTeamA);
         }
         if (scorePlayerA == 4) {
-            String scoreTeamA = "YAY";
+            scoreTeamA = "YAY";
             displayMessageA(scoreTeamA);
-            String scoreTeamB = "0";
+            scoreTeamB = "0";
             displayMessageB(scoreTeamB);
             gamesPlayerA = gamesPlayerA + 1;
             displayGameScoreA(gamesPlayerA);
@@ -60,32 +66,32 @@ public class MainActivity extends AppCompatActivity {
 
         if (setsPlayerA > 1 && (setsPlayerA - setsPlayerB) > 1 ||
                 (setsPlayerA > 1 && (setsPlayerA - setsPlayerB) == 1)) {
-            String scoreTeamA = "WINNER";
+            scoreTeamA = "WINNER";
             displayMessageA(scoreTeamA);
-            String scoreTeamB = "LOSER";
+            scoreTeamB = "LOSER";
             displayMessageB(scoreTeamB);
         }
 
     }
 
     public void addScorePlayerB(View view) {
-        scorePlayerB = scorePlayerB + 1;
+        scorePlayerB = (short) (scorePlayerB + 1);
         if (scorePlayerB == 1) {
-            String scoreTeamB = "15";
+            scoreTeamB = "15";
             displayMessageB(scoreTeamB);
         }
         if (scorePlayerB == 2) {
-            String scoreTeamB = "30";
+            scoreTeamB = "30";
             displayMessageB(scoreTeamB);
         }
         if (scorePlayerB == 3) {
-            String scoreTeamB = "40";
+            scoreTeamB = "40";
             displayMessageB(scoreTeamB);
         }
         if (scorePlayerB == 4) {
-            String scoreTeamB = "YAY";
+            scoreTeamB = "YAY";
             displayMessageB(scoreTeamB);
-            String scoreTeamA = "0";
+            scoreTeamA = "0";
             displayMessageA(scoreTeamA);
             gamesPlayerB = gamesPlayerB + 1;
             displayGameScoreB(gamesPlayerB);
@@ -108,9 +114,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (setsPlayerB > 1 && (setsPlayerB - setsPlayerA) > 1 ||
                 setsPlayerB > 1 && (setsPlayerB - setsPlayerA) == 1) {
-            String scoreTeamB = "WINNER";
+            scoreTeamB = "WINNER";
             displayMessageB(scoreTeamB);
-            String scoreTeamA = "LOSER";
+            scoreTeamA = "LOSER";
             displayMessageA(scoreTeamA);
         }
 
@@ -127,9 +133,9 @@ public class MainActivity extends AppCompatActivity {
         displayGameScoreB(gamesPlayerB);
         displaySetsScoreB(setsPlayerB);
         displaySetsScoreA(setsPlayerA);
-        String scoreTeamB = "0";
+        scoreTeamB = "0";
         displayMessageB(scoreTeamB);
-        String scoreTeamA = "0";
+        scoreTeamA = "0";
         displayMessageA(scoreTeamA);
     }
 
@@ -162,4 +168,26 @@ public class MainActivity extends AppCompatActivity {
         TextView scoreView = (TextView) findViewById(R.id.player_b_sets);
         scoreView.setText(String.valueOf(setsPlayerB));
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //somehow save values of the variables and strings
+        outState.putShort("scorePlayerA2", scorePlayerA);
+        outState.putShort("scorePlayerB2", scorePlayerB);
+        outState.putString("scoreTeamA2", scoreTeamA);
+        outState.putString("scoreTeamB2", scoreTeamB);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        //repopulate values
+        scorePlayerA = savedInstanceState.getShort("scorePlayerA2");
+        scorePlayerB = savedInstanceState.getShort("scorePlayerB2");
+        scoreTeamA = savedInstanceState.getString("scoreTeamA2");
+        scoreTeamB = savedInstanceState.getString("scoreTeamB2");
+
+    }
+
 }
