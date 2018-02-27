@@ -7,8 +7,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    short scorePlayerA = 0;
-    short scorePlayerB = 0;
+    int scorePlayerA = 0;
+    int scorePlayerB = 0;
     int gamesPlayerA = 0;
     int gamesPlayerB = 0;
     int setsPlayerA = 0;
@@ -23,12 +23,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        displayGameScoreA(gamesPlayerA);
+        displayGameScoreB(gamesPlayerB);
+        displaySetsScoreB(setsPlayerB);
+        displaySetsScoreA(setsPlayerA);
+        displayMessageB(scoreTeamB);
+        displayMessageB(scoreTeamA);
 
     }
 
     public void addScorePlayerA(View view) {
-        scorePlayerA = (short) (scorePlayerA + 1);
+        scorePlayerA = (scorePlayerA + 1);
         if (scorePlayerA == 1) {
             scoreTeamA = "15";
             displayMessageA(scoreTeamA);
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addScorePlayerB(View view) {
-        scorePlayerB = (short) (scorePlayerB + 1);
+        scorePlayerB = (scorePlayerB + 1);
         if (scorePlayerB == 1) {
             scoreTeamB = "15";
             displayMessageB(scoreTeamB);
@@ -171,22 +176,36 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         //somehow save values of the variables and strings
-        outState.putShort("scorePlayerA2", scorePlayerA);
-        outState.putShort("scorePlayerB2", scorePlayerB);
+        outState.putInt("scorePlayerA2", scorePlayerA);
+        outState.putInt("scorePlayerB2", scorePlayerB);
         outState.putString("scoreTeamA2", scoreTeamA);
         outState.putString("scoreTeamB2", scoreTeamB);
+        outState.putInt("gamesPlayerA2", gamesPlayerA);
+        outState.putInt("gamesPlayerB2", gamesPlayerB);
+        outState.putInt("setsPlayerA2", setsPlayerA);
+        outState.putInt("setsPlayerB2", setsPlayerB);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         //repopulate values
-        scorePlayerA = savedInstanceState.getShort("scorePlayerA2");
-        scorePlayerB = savedInstanceState.getShort("scorePlayerB2");
+        scorePlayerA = savedInstanceState.getInt("scorePlayerA2");
+        scorePlayerB = savedInstanceState.getInt("scorePlayerB2");
         scoreTeamA = savedInstanceState.getString("scoreTeamA2");
         scoreTeamB = savedInstanceState.getString("scoreTeamB2");
+        gamesPlayerA = savedInstanceState.getInt("gamesPlayerA2");
+        gamesPlayerB = savedInstanceState.getInt("gamesPlayerB2");
+        setsPlayerA = savedInstanceState.getInt("setsPlayerA2");
+        setsPlayerB = savedInstanceState.getInt("setsPlayerB2");
+        displayGameScoreA(gamesPlayerA);
+        displayGameScoreB(gamesPlayerB);
+        displaySetsScoreB(setsPlayerB);
+        displaySetsScoreA(setsPlayerA);
+        displayMessageB(scoreTeamB);
+        displayMessageB(scoreTeamA);
 
     }
 
